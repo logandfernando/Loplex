@@ -2,65 +2,44 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Private TV Channel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My TV</title>
   <style>
-    body { background: #111; color: #fff; font-family: sans-serif; text-align: center; margin: 0; padding: 20px; }
-    #login-box { max-width: 400px; margin: 100px auto; background: #1c1c1c; padding: 30px; border-radius: 8px; border: 1px solid #333; }
-    input { padding: 10px; font-size: 16px; border-radius: 4px; border: 1px solid #444; background: #222; color: #fff; width: 80%; margin-bottom: 15px; }
-    button { background: #e50914; color: #fff; border: none; padding: 10px 20px; font-size: 16px; border-radius: 4px; cursor: pointer; }
-    button:hover { background: #b20710; }
-    #tv-content { display: none; }
-    .tv-screen { max-width: 800px; margin: 0 auto 20px; background: #000; border: 4px solid #333; border-radius: 8px; overflow: hidden; }
-    video { width: 100%; height: auto; display: block; }
-    .channels button { background: #222; border: 1px solid #444; margin: 5px; }
-    .channels button:hover { background: #e50914; border-color: #e50914; }
+    body {
+      background: #111;
+      color: #fff;
+      font-family: sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 20px;
+    }
+    .tv-screen {
+      max-width: 800px;
+      margin: 20px auto;
+      background: #000;
+      border: 4px solid #333;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    p {
+      font-size: 20px;
+      font-weight: bold;
+      margin-top: 15px;
+    }
   </style>
 </head>
 <body>
 
-  <!-- Password Screen -->
-  <div id="login-box">
-    <h2>Enter TV Password</h2>
-    <input type="password" id="pass-input" placeholder="Password">
-    <br>
-    <button onclick="checkPassword()">Watch Now</button>
-    <p id="error-msg" style="color: #ff4d4d; display: none;">Wrong password. Try again.</p>
+  <div class="tv-screen">
+    <video src="E1.mp4" controls playsinline></video>
   </div>
 
-  <!-- Hidden TV Player -->
-  <div id="tv-content">
-    <h1>Private TV Channel</h1>
-    <div class="tv-screen">
-      <video id="player" controls playsinline></video>
-    </div>
-
-    <div class="channels">
-      <button onclick="changeChannel('E1.mp4')">Channel 1</button>
-      <button onclick="changeChannel('video2.mp4')">Channel 2</button>
-    </div>
-  </div>
-
-  <script>
-    const SITE_PASSWORD = "Shane151";
-    const DEFAULT_CHANNEL = "video1.mp4";
-
-    function checkPassword() {
-      const entered = document.getElementById("pass-input").value;
-      if (entered === SITE_PASSWORD) {
-        document.getElementById("login-box").style.display = "none";
-        document.getElementById("tv-content").style.display = "block";
-        changeChannel(DEFAULT_CHANNEL);
-      } else {
-        document.getElementById("error-msg").style.display = "block";
-      }
-    }
-
-    function changeChannel(file) {
-      const player = document.getElementById("player");
-      player.src = file;
-      player.play();
-    }
-  </script>
+  <p>Episode 1</p>
 
 </body>
 </html>
